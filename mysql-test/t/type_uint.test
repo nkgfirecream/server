@@ -15,3 +15,8 @@ select * from t1;
 drop table t1;
 
 # End of 4.1 tests
+
+create table t1 (a bigint unsigned, b mediumint unsigned);
+insert t1 values (1,2),(0xffffffffffffffff,0xffffff);
+select coalesce(a,b), coalesce(b,a) from t1;
+drop table t1;

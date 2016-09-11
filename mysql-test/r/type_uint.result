@@ -14,3 +14,10 @@ this
 0
 4294967295
 drop table t1;
+create table t1 (a bigint unsigned, b mediumint unsigned);
+insert t1 values (1,2),(0xffffffffffffffff,0xffffff);
+select coalesce(a,b), coalesce(b,a) from t1;
+coalesce(a,b)	coalesce(b,a)
+1	2
+18446744073709551615	16777215
+drop table t1;
